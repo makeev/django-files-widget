@@ -29,7 +29,8 @@ except ImportError:
 setup(
     name='django-files-widget',
     version=version,
-    description="Django AJAX upload widget and model field for multiple files or images, featuring drag & drop uploading, upload progress bar, sortable image gallery",
+    description="Django AJAX upload widget and model field for multiple files or images, "
+                "featuring drag & drop uploading, upload progress bar, sortable image gallery",
     long_description=read('README.md'),
     classifiers=[
         # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
