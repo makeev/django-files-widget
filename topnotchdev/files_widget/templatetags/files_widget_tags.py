@@ -6,6 +6,7 @@ from django import template
 
 register = template.Library()
 
+
 @register.filter
 def thumbnail_format(path):
     match = re.search(r'\.\w+$', path)
@@ -15,9 +16,11 @@ def thumbnail_format(path):
             return 'PNG'
     return 'JPEG'
 
+
 @register.filter
 def filename_from_path(path):
     return re.sub(r'^.+\/', '', path)
+
 
 @register.filter
 def unquote(value):

@@ -1,10 +1,12 @@
+from __future__ import absolute_import
+
 from django.db import models
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from forms import FilesFormField, BaseFilesWidget, FilesWidget, ImagesWidget
-import controllers
-from settings import *
+from .forms import FilesFormField, BaseFilesWidget, FilesWidget, ImagesWidget
+from topnotchdev.files_widget import controllers
+from .settings import *
 
 
 def formfield_defaults(self, default_widget=None, widget=None, form_class=FilesFormField, required=True, **kwargs):

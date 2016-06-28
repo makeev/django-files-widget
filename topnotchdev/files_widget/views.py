@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from django.http import Http404, HttpResponse
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -7,8 +9,8 @@ from PIL import Image
 
 import json
 
-from settings import FILES_DIR, PROJECT_DIR, IMAGE_QUALITY
-from controllers import ImagePath
+from .settings import FILES_DIR, PROJECT_DIR, IMAGE_QUALITY
+from .controllers import ImagePath
 
 
 def upload(request):

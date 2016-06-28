@@ -3,8 +3,10 @@ from django.template.loader import render_to_string
 
 from topnotchdev.files_widget.settings import *
 
+
 class VisibleHiddenInput(forms.HiddenInput):
     is_hidden=False
+
 
 class BaseFilesWidget(forms.MultiWidget):
     def __init__(self,
