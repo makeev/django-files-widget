@@ -3,11 +3,13 @@ import sys, os
 
 version = '0.2.4'
 
+
 def read(fname):
     # file read function copied from sorl.django-documents project
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 install_requires = [
+    'django',
     'sorl-thumbnail',
 ]
 
