@@ -34,7 +34,7 @@ class FilePath(six.text_type):
         }
         if isinstance(settings, dict):
             self.settings.update(settings)
-        self.settings.update(settings)
+        
         return self
 
     def _html_attrs(self, **kwargs):
