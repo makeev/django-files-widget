@@ -41,17 +41,17 @@ def upload(request):
                                                           {'MEDIA_URL': settings.MEDIA_URL,
                                                            'STATIC_URL': settings.STATIC_URL,
                                                            'preview_size': preview_size})
-            return HttpResponse(json.dumps(response_data), content_type="application/json")
 
         else:
             response_data['status'] = False
             response_data['message'] = "We're sorry, but something went wrong."
-            return HttpResponse(json.dumps(response_data), content_type='application/json')
+
+        return HttpResponse(json.dumps(response_data), content_type='application/json')
 
 
 def thumbnail_url(request):
-    if not 'img' in request.GET or not 'preview_size' in request.GET:
+    if 'img' not in request.GET or 'preview_size' not in request.GET:
         raise Http404
     
-    thumbnail_url = ImagePath(request.GET['img']).thumbnail(request.GET['preview_size']).url
-    return HttpResponse(thumbnail_url)
+    url = ImagePath(request.GET['img']).thumbnail(request.GET['preview_size']).url
+    return HttpResponse(url)
