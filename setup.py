@@ -47,7 +47,8 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    keywords='django ajax html5 upload widget files images gallery sorting progress thumbnails multiple m2m imagesfield imagefield filesfield filefield admin forms field',
+    keywords='django ajax html5 upload widget files images gallery sorting progress thumbnails'
+             'multiple m2m imagesfield imagefield filesfield filefield admin forms field',
     author='Top Notch Development',
     author_email='info@topnotchdevelopment.nl',
     url='http://topnotchdevelopment.nl',
