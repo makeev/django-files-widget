@@ -1,7 +1,8 @@
 from django import forms
+from django.utils import six
 
 
-class UnicodeWithAttr(unicode):
+class UnicodeWithAttr(six.text_type):
     deleted_files = None
     moved_files = None
 

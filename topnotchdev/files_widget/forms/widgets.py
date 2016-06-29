@@ -5,7 +5,7 @@ from topnotchdev.files_widget.settings import *
 
 
 class VisibleHiddenInput(forms.HiddenInput):
-    is_hidden=False
+    is_hidden = False
 
 
 class BaseFilesWidget(forms.MultiWidget):
