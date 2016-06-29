@@ -36,7 +36,7 @@ class FilesField(models.TextField):
     description = _("Files")
     attr_class = controllers.FilePaths
 
-    def contribute_to_class(self, cls, name):
+    def contribute_to_class(self, cls, name, virtual_only=False):
         super(FilesField, self).contribute_to_class(cls, name)
         setattr(cls, self.name, controllers.FilesDescriptor(self))
 
