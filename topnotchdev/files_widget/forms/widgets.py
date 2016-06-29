@@ -1,4 +1,5 @@
 from django import forms
+from django.utils import six
 from django.template.loader import render_to_string
 
 from topnotchdev.files_widget.settings import *
@@ -54,7 +55,7 @@ class BaseFilesWidget(forms.MultiWidget):
             'files': files,
             'deleted_files': deleted_files,
             'multiple': self.multiple and 1 or 0,
-            'preview_size': unicode(self.preview_size),
+            'preview_size': six.text_type(self.preview_size),
         }
         return render_to_string(self.template, context)
 
