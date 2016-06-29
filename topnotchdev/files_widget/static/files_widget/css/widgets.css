@@ -56,7 +56,7 @@
 
 .files-widget-dropbox .preview .thumb {
 	vertical-align: middle;
-    background: url(/static/files_widget/img/transparent-bg.gif) left top;
+    background: url('../img/transparent-bg.gif') left top;
 }
 
 .files-widget-dropbox .preview.new .thumb {

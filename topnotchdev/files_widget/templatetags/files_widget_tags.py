@@ -1,8 +1,10 @@
 import re
-import urllib
+try:
+    from urllib import parse as urllib
+except ImportError:
+    import urllib
 
 from django import template
-
 
 register = template.Library()
 
