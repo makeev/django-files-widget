@@ -17,7 +17,7 @@ from sorl.thumbnail import get_thumbnail
 
 
 class FilePath(six.text_type):
-    def __new__(cls, str, instance=None, field=None, settings={}):
+    def __new__(cls, str, instance=None, field=None, settings=None):
         self = super(FilePath, cls).__new__(cls, str.strip())
         self._instance = instance
         self._field = field
@@ -32,6 +32,8 @@ class FilePath(six.text_type):
             'thumbnail_size': None,
             'thumbnail_attrs': {},
         }
+        if isinstance(settings, dict):
+            self.settings.update(settings)
         self.settings.update(settings)
         return self
 
@@ -190,7 +192,7 @@ class ImagePath(FilePath):
 class FilePaths(six.text_type):
     item_class = FilePath
 
-    def __new__(cls, str, instance=None, field=None, settings={}):
+    def __new__(cls, str, instance=None, field=None, settings=None):
         self = super(FilePaths, cls).__new__(cls, str)
         self._instance = instance
         self._field = field
@@ -202,7 +204,8 @@ class FilePaths(six.text_type):
             'thumbnail_size': None,
             'thumbnail_attrs': {},
         }
-        self.settings.update(settings)
+        if isinstance(settings, dict):
+            self.settings.update(settings)
         return self
 
     def all(self):
