@@ -22,8 +22,8 @@ def upload(request):
         if request.FILES:
             files = list(request.FILES.values())[0]
             path = default_storage.save('{}{}/{}'.format(FILES_DIR,
-                                                          request.user.pk,
-                                                          files.name), ContentFile(files.read()))
+                                                         request.user.pk,
+                                                         files.name), ContentFile(files.read()))
             try:
                 full_path = PROJECT_DIR+'/'+path
                 img = Image.open(full_path)
