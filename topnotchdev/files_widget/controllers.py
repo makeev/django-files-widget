@@ -1,5 +1,8 @@
 import re
-import urllib
+try:
+    from urllib import parse as urllib
+except ImportError: #for python2
+    import urllib
 import os
 from datetime import datetime
 
@@ -13,7 +16,7 @@ from django.contrib.staticfiles import finders
 from sorl.thumbnail import get_thumbnail
 
 
-class FilePath(unicode):
+class FilePath(six.text_type):
     def __new__(cls, str, instance=None, field=None, settings={}):
         self = super(FilePath, cls).__new__(cls, str.strip())
         self._instance = instance
@@ -184,7 +187,7 @@ class ImagePath(FilePath):
         raise AttributeError
 
 
-class FilePaths(unicode):
+class FilePaths(six.text_type):
     item_class = FilePath
 
     def __new__(cls, str, instance=None, field=None, settings={}):
