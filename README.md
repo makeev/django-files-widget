@@ -153,6 +153,7 @@ Navigation
 
 ### Model Field Options
 
+- [`upload_to`](#upload_to) (only string values supported now)
 - [`max_length`](#max_length)
 
 ### FilesField and ImagesField Instance Attributes
