@@ -65,7 +65,6 @@ Quick Start
     
 (Optional) basic settings with their defaults:
 
-    FILES_WIDGET_FILES_DIR           # 'uploads/files_widget/'
     FILES_WIDGET_JQUERY_PATH         # (jQuery 2.2.4 from Google)
     FILES_WIDGET_JQUERY_UI_PATH      # (jQuery UI 1.11.4 from Google)
     FILES_WIDGET_IMAGE_QUALITY       # 50
