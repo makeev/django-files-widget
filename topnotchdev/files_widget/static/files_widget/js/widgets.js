@@ -313,12 +313,15 @@ $(function(){
             uploadURL = dropbox.data('upload-url'),
             multiple = dropbox.data('multiple') == 1,
             previewSize = dropbox.data('preview-size'),
+            app_name = dropbox.data('app-name'),
+            model_name = dropbox.data('model-name'),
+            field_name = dropbox.data('input-name'),
             initialFiles = $('.preview', dropbox),
             fileBrowserResultInput = $('.filebrowser-result', that),
             deletedContainer = $('.files-widget-deleted', that),
             deletedList = $('.deleted-list', deletedContainer),
             stats = $('.upload-progress-stats', that),
-            hiddenInput = $('input[name="' + dropbox.data('input-name') + '_0"]'),
+            hiddenInput = $('input[name="' + field_name + '_0"]'),
             initialFileNames = splitlines(hiddenInput.val()),
             name;
 
@@ -439,7 +442,10 @@ $(function(){
             limitConcurrentUploads: 3,
             formData: [
                 { name: 'csrfmiddlewaretoken', value: csrfToken },
-                { name: 'preview_size', value: previewSize }
+                { name: 'preview_size', value: previewSize },
+                { name: 'app', value: app_name },
+                { name: 'model', value: model_name },
+                { name: 'field', value: field_name }
             ],
             autoUpload: true,
             maxFileSize: 10000000,

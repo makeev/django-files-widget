@@ -11,12 +11,16 @@ class VisibleHiddenInput(forms.HiddenInput):
 
 class BaseFilesWidget(forms.MultiWidget):
     def __init__(self,
+                 app_name,
+                 model_name,
                  multiple=False,
                  preview_size=150,
                  template="files_widget/files_widget.html",
                  widgets=tuple([VisibleHiddenInput]*3),
                  **kwargs):
         super(BaseFilesWidget, self).__init__(widgets, **kwargs)
+        self.app_name = app_name
+        self.model_name = model_name
         self.multiple = multiple
         self.preview_size = preview_size
         self.template = template
@@ -56,15 +60,17 @@ class BaseFilesWidget(forms.MultiWidget):
             'deleted_files': deleted_files,
             'multiple': self.multiple and 1 or 0,
             'preview_size': six.text_type(self.preview_size),
+            'app_name': self.app_name,
+            'model_name': self.model_name,
         }
         return render_to_string(self.template, context)
 
 
 class FilesWidget(BaseFilesWidget):
-    def __init__(self, multiple=True, preview_size=64, **kwargs):
-        super(FilesWidget, self).__init__(multiple, preview_size, **kwargs)
+    def __init__(self, app_name, model_name,  multiple=True, preview_size=64, **kwargs):
+        super(FilesWidget, self).__init__(app_name, model_name, multiple, preview_size, **kwargs)
 
 
 class ImagesWidget(BaseFilesWidget):
-    def __init__(self, multiple=True, preview_size=150, **kwargs):
-        super(ImagesWidget, self).__init__(multiple, preview_size, **kwargs)
+    def __init__(self, app_name, model_name,  multiple=True, preview_size=150, **kwargs):
+        super(ImagesWidget, self).__init__(app_name, model_name, multiple, preview_size, **kwargs)

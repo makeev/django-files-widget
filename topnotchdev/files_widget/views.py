@@ -3,14 +3,29 @@ from __future__ import absolute_import
 from django.http import Http404, HttpResponse
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.core.exceptions import FieldDoesNotExist
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
+try:
+    from django.db.models.loading import get_model
+except ImportError:
+    from django.apps import apps
+    get_model = apps.get_model
+
 from PIL import Image
 
 import json
 
-from .settings import FILES_DIR, PROJECT_DIR, IMAGE_QUALITY
+from .settings import PROJECT_DIR, IMAGE_QUALITY
 from .controllers import ImagePath
+
+
+def get_file_field(app_label, model_name, field_name):
+    model = get_model(app_label, model_name)
+    try:
+        return model._meta.get_field_by_name(field_name)
+    except FieldDoesNotExist:
+        raise
 
 
 def upload(request):
@@ -20,8 +35,14 @@ def upload(request):
     response_data = {}
     if request.is_ajax():
         if request.FILES:
+            field = get_file_field(
+                request.POST.get('app', None),
+                request.POST.get('model', None),
+                request.POST.get('field', None)
+            )[0]
+
             files = list(request.FILES.values())[0]
-            path = default_storage.save('{}{}/{}'.format(FILES_DIR,
+            path = default_storage.save('{}{}/{}'.format(field.upload_to,
                                                          request.user.pk,
                                                          files.name), ContentFile(files.read()))
             try:
