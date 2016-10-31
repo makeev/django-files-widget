@@ -3,7 +3,7 @@ try:
 except ImportError:
     from django.conf.urls import url
 
-from .views import upload, thumbnail_url
+from topnotchdev.files_widget.views import upload, thumbnail_url
 
 urlpatterns = [
     url(u'^upload/$', "upload", name="files_widget_upload"),
