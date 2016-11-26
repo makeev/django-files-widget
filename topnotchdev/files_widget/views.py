@@ -21,12 +21,13 @@ from .controllers import ImagePath
 
 
 def get_file_field(app_label, model_name, field_name):
+    real_field_name = field_name.split('-')[-1]
     model = get_model(app_label, model_name)
     try:
         try:
-            return model._meta.get_field_by_name(field_name)
+            return model._meta.get_field_by_name(real_field_name)
         except AttributeError:
-            return model._meta.get_field(field_name)
+            return model._meta.get_field(real_field_name)
     except FieldDoesNotExist:
         raise
 
