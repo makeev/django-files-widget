@@ -39,11 +39,15 @@ def upload(request):
     response_data = {}
     if request.is_ajax():
         if request.FILES:
-            field = get_file_field(
+            fields = get_file_field(
                 request.POST.get('app', None),
                 request.POST.get('model', None),
                 request.POST.get('field', None)
-            )[0]
+            )
+            try:
+                field = fields[0]
+            except (TypeError, IndexError):
+                field = fields
 
             files = list(request.FILES.values())[0]
             path = default_storage.save('{}{}/{}'.format(field.upload_to,
