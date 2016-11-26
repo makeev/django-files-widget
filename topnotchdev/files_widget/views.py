@@ -23,7 +23,10 @@ from .controllers import ImagePath
 def get_file_field(app_label, model_name, field_name):
     model = get_model(app_label, model_name)
     try:
-        return model._meta.get_field_by_name(field_name)
+        try:
+            return model._meta.get_field_by_name(field_name)
+        except AttributeError:
+            return model._meta.get_field(field_name)
     except FieldDoesNotExist:
         raise
 
