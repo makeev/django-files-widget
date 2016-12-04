@@ -11,7 +11,7 @@ def read(fname):
 
 install_requires = [
     'django',
-    'sorl-thumbnail>=12.3',
+    'sorl-thumbnail=12.4a1',
 ]
 
 # PIL or pillow required
