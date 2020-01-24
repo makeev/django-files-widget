@@ -45,7 +45,7 @@ class BaseFilesWidget(forms.MultiWidget):
             return [value, '', '', ]
         return ['', '', '', ]
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         if not isinstance(value, list):
             value = self.decompress(value)
         files, deleted_files, moved_files = value
